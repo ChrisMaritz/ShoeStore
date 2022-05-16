@@ -5,7 +5,6 @@ apply plugin: 'androidx.navigation.safeargs'
 
 android {
     compileSdkVersion 32
-    buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.udacity.shoestore"
         minSdkVersion 22
@@ -27,6 +26,7 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
+    namespace 'com.udacity.shoestore'
 }
 
 dependencies {
