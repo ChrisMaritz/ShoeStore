@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".InstructionsFragment">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#AA939D"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/instructions_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/instuctions_title"
+                android:textAlignment="center"
+                android:textSize="50sp" />
+
+            <TextView
+                android:id="@+id/instruction1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/instuctions_1"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/instructions_1_discript"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/instructions_1_discript"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/instructions_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/instructions_2"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/instructions_2_discript"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/instructions_2_dispript"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/instructions_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/instructions_3"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/instructions_3_discript"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/instructions_3_discript"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/instructions_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/instructions_4_"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/instructions_4_discript"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/instructions_4_discript"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/to_shoe_list"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="#E15793"
+                android:text="@string/to_shoe_list" />
+        </LinearLayout>
+    </FrameLayout>
+</layout>

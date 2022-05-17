@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">ShoeStore</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="email_login">email</string>
+    <string name="password_login">password</string>
+    <string name="login_button">login</string>
+    <string name="register_button">register</string>
+    <string name="welcome_title">Welcome</string>
+    <string name="welcome_discription">This app is a simple app which functions as part a display of shoes and as well as your able to add your own shoes. For example you will see shoes to buy and shoes you are selling. Later you will be guided to a screen where you can see all the shoes as well as then being able to add shoes to the list. We hope you enjoy.</string>
+    <string name="instructions_button">instructions</string>
+    <string name="instuctions_title">Instructions</string>
+    <string name="instuctions_1">1)</string>
+    <string name="instructions_1_discript">The pink buttons are to navigate to the next screen</string>
+    <string name="instructions_2">2)</string>
+    <string name="instructions_2_dispript">The Arrow at the top left is to go back a screen</string>
+    <string name="instructions_3">3)</string>
+    <string name="instructions_3_discript">The shoe list screen you can view shoes</string>
+    <string name="instructions_4" />
+    <string name="instructions_4_">4)</string>
+    <string name="instructions_4_discript">The shoe details screen is where you can add shoes</string>
+    <string name="to_shoe_list">shoe list</string>
 </resources>
