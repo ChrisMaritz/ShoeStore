@@ -6,8 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import com.udacity.shoestore.databinding.FragmentInstructionsBinding
+import com.udacity.shoestore.databinding.FragmentShoeListBinding
+import com.udacity.shoestore.models.ShoesViewModel
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -16,13 +20,14 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [InstructionsFragment.newInstance] factory method to
+ * Use the [ShoeListFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class InstructionsFragment : Fragment() {
+class ShoeListFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    lateinit var viewModel: ShoesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,16 +41,38 @@ class InstructionsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding : FragmentInstructionsBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_instructions, container, false)
+        // Inflate the layout for this fragment
+        val binding : FragmentShoeListBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_list, container, false)
         val view = binding.root
 
-        binding.toShoeList.setOnClickListener { view1 : View ->
-            Navigation.findNavController(view1).navigate(R.id.action_instructionsFragment_to_shoeListFragment)
+        viewModel = ViewModelProvider(this).get(ShoesViewModel::class.java)
+
+        viewModel.shoes.observe(viewLifecycleOwner, Observer {
+            populateShoes(binding, viewModel)
+        })
+
+        binding.updateButton.setOnClickListener{populateShoes(binding, viewModel)}
+        binding.floatingActionButton.setOnClickListener { view1 : View ->
+            Navigation.findNavController(view1).navigate(R.id.action_shoeListFragment_to_shoeDetailFragment)
         }
+
 
         return view
     }
 
+    fun populateShoes(binding: FragmentShoeListBinding, viewModel: ShoesViewModel){
+
+        val value = viewModel.shoes.value
+
+        if (value != null) {
+            for(item in value){
+                binding.populateThis.text = item.name + "\n"
+                binding.populateThis.text = item.size.toString() + "\n"
+                binding.populateThis.text = item.company + "\n"
+                binding.populateThis.text = item.description + "\n"
+            }
+        }
+    }
     companion object {
         /**
          * Use this factory method to create a new instance of
@@ -53,12 +80,12 @@ class InstructionsFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment InstructionsFragment.
+         * @return A new instance of fragment ShoeListFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            InstructionsFragment().apply {
+            ShoeListFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
