@@ -8,6 +8,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+<!--        The use of Linear layout was used here because this views requirements were very simple-->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"

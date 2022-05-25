@@ -8,7 +8,8 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <!-- TODO: Update blank fragment layout -->
+
+<!--        again this was a very simple layout so I decided to use linear layout-->
 
         <LinearLayout
             android:layout_width="match_parent"

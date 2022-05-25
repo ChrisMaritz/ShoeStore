@@ -30,6 +30,10 @@ class LoginFragment : Fragment() {
             Navigation.findNavController(view1).navigate(R.id.action_loginFragment_to_welcomeFragment)
         }
 
+        binding.registerButton.setOnClickListener { view1 : View ->
+            Navigation.findNavController(view1).navigate(R.id.action_loginFragment_to_welcomeFragment)
+        }
+
         return view
     }
 

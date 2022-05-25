@@ -9,10 +9,14 @@
         android:layout_height="match_parent"
         android:background="#AA939D">
 
+<!--        a scrollview was put here as it was instructed -->
+
         <ScrollView
             android:id="@+id/shoe_list_scrollview"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+<!--            a linear layout seemed like the best way to contain all the text i needed-->
 
             <LinearLayout
                 android:id="@+id/linear_layout_list"

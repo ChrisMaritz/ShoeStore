@@ -9,6 +9,7 @@
         android:layout_height="match_parent">
     <!-- TODO: Update blank fragment layout -->
 
+<!--        the use of linear layout was used here because a login page usually only uses a linear layout-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
