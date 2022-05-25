@@ -3,6 +3,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ShoeDetailFragment">
+
+<!--    <data>-->
+<!--        <variable-->
+<!--            name="ShoeViewModel"-->
+<!--            type="com.udacity.shoestore.models.ShoesViewModel" />-->
+<!--        <variable-->
+<!--            name="Shoe"-->
+<!--            type="com.udacity.shoestore.models.Shoe" />-->
+<!--    </data>-->
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -47,10 +57,10 @@
                 android:layout_marginEnd="16dp"
                 android:ems="10"
                 android:hint="Shoe size"
-                android:inputType="textPersonName"
+                android:importantForAutofill="no"
+                android:inputType="number"
                 android:minHeight="48dp"
-                android:textColorHint="#263238"
-                android:importantForAutofill="no" />
+                android:textColorHint="#263238" />
 
             <EditText
                 android:id="@+id/shoe_company_edit"

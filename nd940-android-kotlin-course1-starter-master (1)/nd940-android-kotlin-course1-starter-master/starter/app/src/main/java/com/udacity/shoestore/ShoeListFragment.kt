@@ -45,13 +45,6 @@ class ShoeListFragment : Fragment() {
         val binding : FragmentShoeListBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_list, container, false)
         val view = binding.root
 
-        viewModel = ViewModelProvider(this).get(ShoesViewModel::class.java)
-
-        viewModel.shoes.observe(viewLifecycleOwner, Observer {
-            populateShoes(binding, viewModel)
-        })
-
-        binding.updateButton.setOnClickListener{populateShoes(binding, viewModel)}
         binding.floatingActionButton.setOnClickListener { view1 : View ->
             Navigation.findNavController(view1).navigate(R.id.action_shoeListFragment_to_shoeDetailFragment)
         }
@@ -60,19 +53,6 @@ class ShoeListFragment : Fragment() {
         return view
     }
 
-    fun populateShoes(binding: FragmentShoeListBinding, viewModel: ShoesViewModel){
-
-        val value = viewModel.shoes.value
-
-        if (value != null) {
-            for(item in value){
-                binding.populateThis.text = item.name + "\n"
-                binding.populateThis.text = item.size.toString() + "\n"
-                binding.populateThis.text = item.company + "\n"
-                binding.populateThis.text = item.description + "\n"
-            }
-        }
-    }
     companion object {
         /**
          * Use this factory method to create a new instance of

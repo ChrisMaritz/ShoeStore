@@ -6,18 +6,19 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class ShoesViewModel : ViewModel() {
-
     private val shoeList = mutableListOf<Shoe>()
     private val _shoes = MutableLiveData<MutableList<Shoe>>()
-    val shoes : LiveData<MutableList<Shoe>>
+    val shoes : MutableLiveData<MutableList<Shoe>>
         get() = _shoes
 
-    fun addShoe(name: String, size: String, company: String, description: String){
-        val shoes1 = Shoe(name, size.toDouble(), company, description)
-        shoeList.add(shoes1)
+    private val editTextItems = mutableListOf<String>()
+
+    fun addShoe(shoe : Shoe){
+        shoeList.add(shoe)
         _shoes.value = shoeList
 
-        Log.i( "Shoes2" , shoeList.toString())
+
+        Log.i( "Shoes2" , _shoes.toString())
     }
 
 }

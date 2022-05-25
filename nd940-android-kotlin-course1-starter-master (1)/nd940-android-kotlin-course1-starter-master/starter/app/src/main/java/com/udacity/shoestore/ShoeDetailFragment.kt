@@ -7,9 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.udacity.shoestore.databinding.FragmentShoeDetailBinding
+import com.udacity.shoestore.databinding.FragmentShoeListBinding
+import com.udacity.shoestore.models.Shoe
 import com.udacity.shoestore.models.ShoesViewModel
 
 // TODO: Rename parameter arguments, choose names that match
@@ -44,15 +47,19 @@ class ShoeDetailFragment : Fragment() {
         val binding : FragmentShoeDetailBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_detail, container, false)
         val view = binding.root
 
+        viewModel = ViewModelProvider(this).get(ShoesViewModel::class.java)
+
+        val binding2 : FragmentShoeListBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_list, container, false)
+
         binding.cancelButton.setOnClickListener { view1 : View ->
             Navigation.findNavController(view1).navigate(R.id.action_shoeDetailFragment_to_shoeListFragment)
         }
 
-        binding.submitButton.setOnClickListener { view2 : View ->
+        binding.submitButton.setOnClickListener { view1 : View ->
             getText(binding)
-
-            Navigation.findNavController(view2).navigate(R.id.action_shoeDetailFragment_to_shoeListFragment)
+            Navigation.findNavController(view1).navigate(R.id.action_shoeDetailFragment_to_shoeListFragment)
         }
+
         return view
     }
 
@@ -62,12 +69,24 @@ class ShoeDetailFragment : Fragment() {
         val shoeCompany = binding.shoeCompanyEdit.text.toString()
         val shoeDetail = binding.shoeDetailEdit.text.toString()
 
-        viewModel = ViewModelProvider(this).get(ShoesViewModel::class.java)
+        viewModel.addShoe(Shoe(shoeName, shoeSize.toDouble(), shoeCompany, shoeDetail))
 
-        viewModel.addShoe(shoeName, shoeSize, shoeCompany, shoeDetail)
+        Log.i("shoes", viewModel.shoes.value.toString())
 
-        Log.i("shoes", viewModel.shoes.toString())
+    }
 
+    fun populateShoes(binding: FragmentShoeListBinding, viewModel: ShoesViewModel){
+
+        val value = viewModel.shoes.value
+
+        if (value != null) {
+            for(item in value){
+                binding.populateThis.text = item.name + "\n"
+                binding.populateThis.text = item.size.toString() + "\n"
+                binding.populateThis.text = item.company + "\n"
+                binding.populateThis.text = item.description + "\n"
+            }
+        }
     }
 
     companion object {
