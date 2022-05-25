@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.title = null
         val navController = this.findNavController(R.id.myNavHostFragment)
 
-        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        appBarConfiguration = AppBarConfiguration(navController.graph)
         viewModel = ViewModelProvider(this).get(ShoesViewModel::class.java)
         binding.toolbar.setupWithNavController(navController, appBarConfiguration)
 
