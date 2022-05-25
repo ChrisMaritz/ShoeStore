@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModel
 class ShoesViewModel : ViewModel() {
     private val shoeList = mutableListOf<Shoe>()
     private val _shoes = MutableLiveData<MutableList<Shoe>>()
-    val shoes : MutableLiveData<MutableList<Shoe>>
+    val shoes : LiveData<MutableList<Shoe>>
         get() = _shoes
 
     private val editTextItems = mutableListOf<String>()
@@ -18,7 +18,7 @@ class ShoesViewModel : ViewModel() {
         _shoes.value = shoeList
 
 
-        Log.i( "Shoes2" , _shoes.toString())
+        Log.i( "Shoes2" , _shoes.value.toString())
     }
 
 }

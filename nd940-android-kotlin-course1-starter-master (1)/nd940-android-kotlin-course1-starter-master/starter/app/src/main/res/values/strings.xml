@@ -22,4 +22,5 @@
     <string name="to_shoe_list">shoe list</string>
     <string name="submit_button">Submit</string>
     <string name="add_shoe_title">Add Shoe</string>
+    <string name="back_to_login">Back to login</string>
 </resources>

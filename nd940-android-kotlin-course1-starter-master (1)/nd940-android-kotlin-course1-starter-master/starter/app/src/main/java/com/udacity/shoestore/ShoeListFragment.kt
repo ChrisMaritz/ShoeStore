@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.udacity.shoestore.databinding.FragmentShoeListBinding
 import com.udacity.shoestore.models.ShoesViewModel
+import java.lang.StringBuilder
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,6 +29,7 @@ class ShoeListFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     lateinit var viewModel: ShoesViewModel
+    private lateinit var binding: FragmentShoeListBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,15 +44,31 @@ class ShoeListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val binding : FragmentShoeListBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_list, container, false)
+         binding  = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_list, container, false)
         val view = binding.root
 
         binding.floatingActionButton.setOnClickListener { view1 : View ->
             Navigation.findNavController(view1).navigate(R.id.action_shoeListFragment_to_shoeDetailFragment)
         }
 
+        binding.backToLoginButton.setOnClickListener { view2 : View ->
+            Navigation.findNavController(view2).navigate(R.id.action_shoeListFragment_to_loginFragment)
+        }
+
 
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(requireActivity()).get(ShoesViewModel::class.java);
+        viewModel.shoes.observe(viewLifecycleOwner){shoesList->
+            val sb = StringBuilder()
+            for(shoe in shoesList){
+                sb.append(shoe.toString())
+            }
+            binding.populateThis.text = sb.toString()
+        }
     }
 
     companion object {

@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import com.udacity.shoestore.databinding.FragmentShoeDetailBinding
 import com.udacity.shoestore.databinding.FragmentShoeListBinding
@@ -47,23 +48,23 @@ class ShoeDetailFragment : Fragment() {
         val binding : FragmentShoeDetailBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_detail, container, false)
         val view = binding.root
 
-        viewModel = ViewModelProvider(this).get(ShoesViewModel::class.java)
-
         val binding2 : FragmentShoeListBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_list, container, false)
 
         binding.cancelButton.setOnClickListener { view1 : View ->
             Navigation.findNavController(view1).navigate(R.id.action_shoeDetailFragment_to_shoeListFragment)
         }
 
+        viewModel = ViewModelProvider(requireActivity()).get(ShoesViewModel::class.java)
+
         binding.submitButton.setOnClickListener { view1 : View ->
-            getText(binding)
+            getText(binding, viewModel)
             Navigation.findNavController(view1).navigate(R.id.action_shoeDetailFragment_to_shoeListFragment)
         }
 
         return view
     }
 
-    fun getText(binding: FragmentShoeDetailBinding){
+    fun getText(binding: FragmentShoeDetailBinding, _viewModel: ShoesViewModel){
         val shoeName = binding.shoeNameEdit.text.toString()
         val shoeSize = binding.shoeSizeEdit.text.toString()
         val shoeCompany = binding.shoeCompanyEdit.text.toString()
