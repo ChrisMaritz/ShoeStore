@@ -37,3 +37,7 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
+
+<!--    for the toolbar functionality I was struggling to set up a toolbar so I needed some guidance-->
+<!--    I looked at https://www.geeksforgeeks.org/toolbar-in-android-with-example/ I took some notes while-->
+<!--    reading through and implemented the rest on my own, I read this on May 20th 2022-->

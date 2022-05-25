@@ -19,8 +19,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
-        setSupportActionBar(findViewById(R.id.toolbar))
-        supportActionBar?.title = null
+        setSupportActionBar(binding.toolbar)
         val navController = this.findNavController(R.id.myNavHostFragment)
 
         appBarConfiguration = AppBarConfiguration(navController.graph)
@@ -31,3 +30,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
+
+//for the toolbar functionality I was struggling to set up a toolbar so I needed some guidance.
+//I looked at guidelines at https://www.geeksforgeeks.org/toolbar-in-android-with-example/ (23 Feb, 2021) I took some notes while
+//reading through and implemented the toolbar.
