@@ -7,12 +7,6 @@
         <variable
             name="ShoeViewModel"
             type="com.udacity.shoestore.models.ShoesViewModel" />
-        <variable
-            name="Shoes"
-            type="com.udacity.shoestore.models.Shoe" />
-        <variable
-            name="fragment"
-            type="com.udacity.shoestore.ShoeDetailFragment" />
     </data>
     <FrameLayout
         android:layout_width="match_parent"
