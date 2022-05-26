@@ -3,7 +3,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ShoeDetailFragment">
-
+    <data>
+        <variable
+            name="ShoeViewModel"
+            type="com.udacity.shoestore.models.ShoesViewModel" />
+        <variable
+            name="Shoes"
+            type="com.udacity.shoestore.models.Shoe" />
+        <variable
+            name="fragment"
+            type="com.udacity.shoestore.ShoeDetailFragment" />
+    </data>
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -36,6 +46,7 @@
                 android:layout_marginEnd="16dp"
                 android:ems="10"
                 android:hint="Shoe name"
+                android:text="@={ShoeViewModel.shoeName}"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
                 android:textColorHint="#263238"
@@ -51,8 +62,9 @@
                 android:ems="10"
                 android:hint="Shoe size"
                 android:importantForAutofill="no"
-                android:inputType="number"
+                android:inputType="textPersonName"
                 android:minHeight="48dp"
+                android:text="@={ShoeViewModel.shoeSize}"
                 android:textColorHint="#263238" />
 
             <EditText
@@ -64,6 +76,7 @@
                 android:layout_marginEnd="16dp"
                 android:ems="10"
                 android:hint="Shoe company"
+                android:text="@={ShoeViewModel.shoeCompany}"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
                 android:textColorHint="#263238"
@@ -77,6 +90,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:ems="10"
+                android:text="@={ShoeViewModel.shoeDescription}"
                 android:hint="Shoe discription"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"

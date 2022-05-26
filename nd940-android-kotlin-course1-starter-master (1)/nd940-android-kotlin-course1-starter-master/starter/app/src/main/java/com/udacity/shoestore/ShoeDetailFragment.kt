@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
@@ -39,38 +38,15 @@ class ShoeDetailFragment : Fragment() {
         }
 
         viewModel = ViewModelProvider(requireActivity()).get(ShoesViewModel::class.java)
+        binding.shoeViewModel = viewModel
+        binding.lifecycleOwner = this
 
-        binding.submitButton.setOnClickListener { view1 : View ->
-            getText(binding, viewModel)
-            Navigation.findNavController(view1).navigate(R.id.action_shoeDetailFragment_to_shoeListFragment)
+        binding.submitButton.setOnClickListener { view1: View ->
+            Navigation.findNavController(view1)
+                .navigate(R.id.action_shoeDetailFragment_to_shoeListFragment)
+            viewModel.addShoe()
         }
 
         return view
     }
-
-    fun getText(binding: FragmentShoeDetailBinding, _viewModel: ShoesViewModel){
-        val shoeName = binding.shoeNameEdit.text.toString()
-        val shoeSize = binding.shoeSizeEdit.text.toString()
-        val shoeCompany = binding.shoeCompanyEdit.text.toString()
-        val shoeDetail = binding.shoeDetailEdit.text.toString()
-
-        viewModel.addShoe(Shoe(shoeName, shoeSize.toDouble(), shoeCompany, shoeDetail))
-
-        Log.i("shoes", viewModel.shoes.value.toString())
-
     }
-
-    fun populateShoes(binding: FragmentShoeListBinding, viewModel: ShoesViewModel){
-
-        val value = viewModel.shoes.value
-
-        if (value != null) {
-            for(item in value){
-                binding.populateThis.text = item.name + "\n"
-                binding.populateThis.text = item.size.toString() + "\n"
-                binding.populateThis.text = item.company + "\n"
-                binding.populateThis.text = item.description + "\n"
-            }
-        }
-    }
-}
